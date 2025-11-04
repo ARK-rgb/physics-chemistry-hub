@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação em Física e Química - Vestibular Prep</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --light-text: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #d97706;
+        }
+
+        .btn-secondary {
+            background-color: var(--success-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #059669;
+        }
+
+        /* Grid de Disciplinas */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .subject-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .subject-card p {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Conteúdo Principal */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 1rem;
+        }
+
+        .content-section h3 {
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* Fórmulas */
+        .formula {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .formula-label {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        /* Exercícios */
+        .exercise {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .exercise-content {
+            margin-bottom: 1rem;
+        }
+
+        .exercise-solution {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--success-color);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .exercise-solution.show {
+            display: block;
+        }
+
+        .btn-solution {
+            background-color: var(--success-color);
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-solution:hover {
+            background-color: #059669;
+        }
+
+        /* Calculadoras */
+        .calculator {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            max-width: 500px;
+        }
+
+        .calculator h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+        }
+
+        .result {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--success-color);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .result-value {
+            font-size: 1.3rem;
+            color: var(--success-color);
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--light-text);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .tabs {
+                gap: 0.5rem;
+            }
+
+            .tab-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Utilitários */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .back-button {
+            background-color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background-color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo" onclick="showHome()">📚 Educação Física & Química</a>
+            <ul class="nav-links">
+                <li><a onclick="showHome()">Início</a></li>
+                <li><a onclick="showSubject('quimica')">Química</a></li>
+                <li><a onclick="showSubject('fisica')">Física</a></li>
+                <li><a onclick="showAbout()">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h1>🎓 Bem-vindo ao Hub de Educação</h1>
+                <p>Prepare-se para os principais vestibulares com conteúdo completo, exercícios resolvidos e ferramentas interativas</p>
+                <button class="btn" onclick="showSubject('quimica')">Começar com Química</button>
+                <button class="btn btn-secondary" onclick="showSubject('fisica')">Começar com Física</button>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card" onclick="showSubject('quimica')">
+                    <h2>⚗️ Química</h2>
+                    <p>Estequiometria, cálculos químicos e reações. Prepare-se para FUVEST, Enem, UnB e mais.</p>
+                    <button class="btn">Explorar</button>
+                </div>
+                <div class="subject-card" onclick="showSubject('fisica')">
+                    <h2>🔬 Física</h2>
+                    <p>Mecânica, cinemática, dinâmica e energia. Domine os conceitos fundamentais da física.</p>
+                    <button class="btn">Explorar</button>
+                </div>
+                <div class="subject-card" onclick="showAbout()">
+                    <h2>📖 Sobre Este Site</h2>
+                    <p>Conheça a história e os objetivos deste projeto educacional inovador.</p>
+                    <button class="btn">Saiba Mais</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Química Section -->
+        <section id="quimica" class="content-section">
+            <button class="btn back-button" onclick="showHome()">← Voltar</button>
+            
+            <h2>⚗️ Estequiometria - Guia Completo</h2>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('quimica', 'teoria')">Teoria</button>
+                <button class="tab-button" onclick="switchTab('quimica', 'formulas')">Fórmulas</button>
+                <button class="tab-button" onclick="switchTab('quimica', 'exercicios')">Exercícios</button>
+                <button class="tab-button" onclick="switchTab('quimica', 'calculadora')">Calculadora</button>
+            </div>
+
+            <!-- Teoria -->
+            <div id="quimica-teoria" class="tab-content active">
+                <h3>Introdução à Estequiometria</h3>
+                <p>A estequiometria é um dos pilares fundamentais da química, atuando como a área que estuda as relações quantitativas entre reagentes e produtos em uma reação química. O termo deriva do grego <em>stoikheion</em> (elemento) e <em>metron</em> (medida), significando literalmente "a medida do elemento".</p>
+
+                <h3>Conceitos Fundamentais</h3>
+                <p><strong>Equações Químicas e Balanceamento:</strong> Uma equação química é a representação simbólica de uma reação. A lei da conservação das massas, proposta por Antoine Lavoisier, dita que a matéria não pode ser criada nem destruída. O processo de ajustar os coeficientes para satisfazer essa lei é chamado de balanceamento de equação.</p>
+
+                <p><strong>O Conceito de Mol:</strong> O mol é a unidade de medida do Sistema Internacional (SI) para "quantidade de substância". Um mol de qualquer substância contém aproximadamente 6,02 × 10²³ entidades elementares (átomos, moléculas, íons). Esse número é conhecido como Constante de Avogadro.</p>
+
+                <p><strong>Massa Molar:</strong> A massa molar (M) é a massa de um mol de uma substância, expressa em gramas por mol (g/mol). Ela é numericamente igual à massa atômica (para elementos) ou à massa molecular (para compostos).</p>
+
+                <h3>Relações Estequiométricas</h3>
+                <table>
+                    <tr>
+                        <th>Relação</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Mol - Mol</strong></td>
+                        <td>Relação direta entre quantidades de matéria</td>
+                        <td>1 mol de N₂ reage com 3 mols de H₂</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mol - Massa</strong></td>
+                        <td>Relação entre mols de uma substância e massa de outra</td>
+                        <td>1 mol de N₂ (28g) produz 2 mols de NH₃</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Massa - Massa</strong></td>
+                        <td>Relação entre massas dos reagentes e produtos</td>
+                        <td>28g de N₂ reagem com 6g de H₂</td>
+                    </tr>
+                </table>
+
+                <h3>Passos para Resolver Problemas</h3>
+                <p><strong>1. Escrever a Equação Química:</strong> Representar a reação descrita no problema.</p>
+                <p><strong>2. Balancear a Equação:</strong> Ajustar os coeficientes para que o número de átomos seja igual em ambos os lados.</p>
+                <p><strong>3. Identificar os Dados:</strong> Extrair as informações fornecidas no problema (massas, volumes, quantidades).</p>
+                <p><strong>4. Converter para Mols:</strong> Se necessário, converter massas para mols usando a massa molar.</p>
+                <p><strong>5. Aplicar a Proporção Estequiométrica:</strong> Usar os coeficientes da equação balanceada para estabelecer as relações.</p>
+                <p><strong>6. Calcular o Resultado:</strong> Realizar os cálculos necessários para encontrar a resposta.</p>
+            </div>
+
+            <!-- Fórmulas -->
+            <div id="quimica-formulas" class="tab-content">
+                <h3>Fórmulas Essenciais de Estequiometria</h3>
+
+                <div class="formula">
+                    <div class="formula-label">Número de Mols</div>
+                    n = m / M
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: n = número de mols, m = massa (g), M = massa molar (g/mol)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Constante de Avogadro</div>
+                    N = n × Nₐ
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: N = número de entidades, n = número de mols, Nₐ = 6,02 × 10²³</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Volume Molar (CNTP)</div>
+                    Vm = 22,4 L/mol
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Volume ocupado por 1 mol de qualquer gás em Condições Normais de Temperatura e Pressão</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Concentração Molar</div>
+                    M = n / V
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: M = concentração molar (mol/L), n = número de mols, V = volume (L)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Rendimento da Reação</div>
+                    η = (quantidade real / quantidade teórica) × 100%
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Percentual de produto obtido em relação ao que seria possível obter</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Massa Molecular</div>
+                    M = Σ(massa atômica dos elementos)
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Soma das massas atômicas de todos os átomos na molécula</p>
+                </div>
+            </div>
+
+            <!-- Exercícios -->
+            <div id="quimica-exercicios" class="tab-content">
+                <h3>Exercícios Resolvidos</h3>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 1: Balanceamento e Relação Molar (Básico)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Na síntese da amônia, nitrogênio reage com hidrogênio. Escreva a equação balanceada e determine quantos mols de amônia são produzidos a partir de 2 mols de nitrogênio.</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Equação não balanceada:</strong> N₂ + H₂ → NH₃</p>
+                        <p><strong>2. Balanceamento:</strong> N₂ + 3H₂ → 2NH₃</p>
+                        <p><strong>3. Proporção estequiométrica:</strong> 1 mol de N₂ produz 2 mols de NH₃</p>
+                        <p><strong>4. Cálculo:</strong> 2 mols de N₂ × (2 mols NH₃ / 1 mol N₂) = 4 mols de NH₃</p>
+                        <p><strong>Resposta:</strong> 4 mols de amônia são produzidos.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 2: Cálculo de Massa (ENEM - Nível Médio)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Na reação de síntese da amônia: N₂ + 3H₂ → 2NH₃. Quantos gramas de amônia são produzidos a partir de 28 g de nitrogênio? (Massas atômicas: N = 14, H = 1)</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Massas molares:</strong> N₂ = 28 g/mol, NH₃ = 17 g/mol</p>
+                        <p><strong>2. Converter massa de N₂ para mols:</strong> n = 28 g ÷ 28 g/mol = 1 mol</p>
+                        <p><strong>3. Usar proporção estequiométrica:</strong> 1 mol N₂ → 2 mols NH₃</p>
+                        <p><strong>4. Converter mols de NH₃ para gramas:</strong> 2 mols × 17 g/mol = 34 g</p>
+                        <p><strong>Resposta:</strong> 34 gramas de amônia são produzidos.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 3: Lei de Lavoisier (Cesgranrio)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Na reação: Fe + S → FeS. Se 56 g de ferro reagem completamente com enxofre, qual é a massa total do produto formado? (Massas atômicas: Fe = 56, S = 32)</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Equação balanceada:</strong> Fe + S → FeS</p>
+                        <p><strong>2. Massas molares:</strong> Fe = 56 g/mol, S = 32 g/mol, FeS = 88 g/mol</p>
+                        <p><strong>3. Mols de Fe:</strong> n = 56 g ÷ 56 g/mol = 1 mol</p>
+                        <p><strong>4. Proporção:</strong> 1 mol Fe → 1 mol FeS</p>
+                        <p><strong>5. Massa de FeS:</strong> 1 mol × 88 g/mol = 88 g</p>
+                        <p><strong>Resposta:</strong> 88 gramas de FeS são formados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculadora -->
+            <div id="quimica-calculadora" class="tab-content">
+                <h3>Calculadora de Estequiometria</h3>
+
+                <div class="calculator">
+                    <h3>Cálculo de Mols</h3>
+                    <div class="form-group">
+                        <label for="massa">Massa (g):</label>
+                        <input type="number" id="massa" placeholder="Digite a massa em gramas" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="massa-molar">Massa Molar (g/mol):</label>
+                        <input type="number" id="massa-molar" placeholder="Digite a massa molar" step="0.01">
+                    </div>
+                    <button class="btn" onclick="calcularMols()">Calcular Mols</button>
+                    <div id="resultado-mols" class="result">
+                        <div class="result-label">Número de Mols:</div>
+                        <div class="result-value" id="valor-mols">0</div>
+                    </div>
+                </div>
+
+                <div class="calculator">
+                    <h3>Cálculo de Massa</h3>
+                    <div class="form-group">
+                        <label for="mols">Número de Mols:</label>
+                        <input type="number" id="mols" placeholder="Digite o número de mols" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="massa-molar-2">Massa Molar (g/mol):</label>
+                        <input type="number" id="massa-molar-2" placeholder="Digite a massa molar" step="0.01">
+                    </div>
+                    <button class="btn" onclick="calcularMassa()">Calcular Massa</button>
+                    <div id="resultado-massa" class="result">
+                        <div class="result-label">Massa (g):</div>
+                        <div class="result-value" id="valor-massa">0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Física Section -->
+        <section id="fisica" class="content-section">
+            <button class="btn back-button" onclick="showHome()">← Voltar</button>
+            
+            <h2>🔬 Mecânica - Guia Completo</h2>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('fisica', 'teoria')">Teoria</button>
+                <button class="tab-button" onclick="switchTab('fisica', 'formulas')">Fórmulas</button>
+                <button class="tab-button" onclick="switchTab('fisica', 'exercicios')">Exercícios</button>
+                <button class="tab-button" onclick="switchTab('fisica', 'calculadora')">Calculadora</button>
+            </div>
+
+            <!-- Teoria -->
+            <div id="fisica-teoria" class="tab-content active">
+                <h3>Introdução à Mecânica</h3>
+                <p>A mecânica é a área da física que estuda o movimento dos corpos e as forças que atuam sobre eles. Dividida em três grandes ramos — cinemática, dinâmica e estática — a mecânica fornece as ferramentas matemáticas e conceituais necessárias para compreender desde o movimento de um automóvel até a órbita de planetas.</p>
+
+                <h3>Cinemática</h3>
+                <p><strong>Posição (x ou s):</strong> A localização de um objeto em relação a um ponto de referência. Medida em metros (m).</p>
+                <p><strong>Deslocamento (Δx):</strong> A variação da posição de um objeto. É uma grandeza vetorial (possui direção e sentido).</p>
+                <p><strong>Velocidade (v):</strong> A taxa de variação da posição em relação ao tempo.</p>
+                <p><strong>Aceleração (a):</strong> A taxa de variação da velocidade em relação ao tempo. Medida em m/s².</p>
+
+                <h3>Movimento Uniforme (MU)</h3>
+                <p>No movimento uniforme, a velocidade permanece constante, o que significa que a aceleração é zero. A principal fórmula é: <strong>v = Δx / Δt</strong> ou <strong>x = x₀ + v·t</strong></p>
+
+                <h3>Movimento Uniformemente Variado (MUV)</h3>
+                <p>No movimento uniformemente variado, a aceleração é constante. As principais fórmulas são:</p>
+                <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                    <li>v = v₀ + a·t (Equação da Velocidade)</li>
+                    <li>x = x₀ + v₀·t + ½·a·t² (Equação da Posição)</li>
+                    <li>v² = v₀² + 2·a·Δx (Equação de Torricelli)</li>
+                </ul>
+
+                <h3>As Três Leis de Newton</h3>
+                <p><strong>Primeira Lei (Lei da Inércia):</strong> Um corpo em repouso tende a permanecer em repouso, e um corpo em movimento tende a permanecer em movimento retilíneo uniforme, a menos que uma força resultante não nula atue sobre ele.</p>
+                <p><strong>Segunda Lei (Lei Fundamental da Dinâmica):</strong> A força resultante que atua sobre um corpo é igual ao produto de sua massa pela aceleração que ele adquire. Matematicamente: <strong>F = m·a</strong></p>
+                <p><strong>Terceira Lei (Lei da Ação e Reação):</strong> Para toda ação, existe uma reação de mesma intensidade, mesma direção e sentido oposto.</p>
+
+                <h3>Trabalho e Energia</h3>
+                <p><strong>Trabalho (W):</strong> W = F · d · cos(θ), medido em joules (J).</p>
+                <p><strong>Energia Cinética:</strong> E_c = ½·m·v²</p>
+                <p><strong>Energia Potencial Gravitacional:</strong> E_p = m·g·h</p>
+                <p><strong>Conservação da Energia Mecânica:</strong> Em um sistema conservativo, E_total = E_c + E_p = constante</p>
+            </div>
+
+            <!-- Fórmulas -->
+            <div id="fisica-formulas" class="tab-content">
+                <h3>Fórmulas Essenciais de Mecânica</h3>
+
+                <div class="formula">
+                    <div class="formula-label">Velocidade Média</div>
+                    v = Δx / Δt
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: v = velocidade (m/s), Δx = deslocamento (m), Δt = intervalo de tempo (s)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Movimento Uniformemente Variado - Velocidade</div>
+                    v = v₀ + a·t
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: v = velocidade final, v₀ = velocidade inicial, a = aceleração, t = tempo</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Movimento Uniformemente Variado - Posição</div>
+                    x = x₀ + v₀·t + ½·a·t²
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: x = posição final, x₀ = posição inicial</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Equação de Torricelli</div>
+                    v² = v₀² + 2·a·Δx
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Útil quando não se conhece o tempo</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Segunda Lei de Newton</div>
+                    F = m·a
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: F = força (N), m = massa (kg), a = aceleração (m/s²)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Peso</div>
+                    P = m·g
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: P = peso (N), m = massa (kg), g = aceleração da gravidade ≈ 10 m/s²</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Força de Atrito</div>
+                    f = μ·N
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: f = força de atrito (N), μ = coeficiente de atrito, N = força normal (N)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Trabalho</div>
+                    W = F·d·cos(θ)
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: W = trabalho (J), F = força (N), d = deslocamento (m), θ = ângulo entre força e deslocamento</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Energia Cinética</div>
+                    E_c = ½·m·v²
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: E_c = energia cinética (J), m = massa (kg), v = velocidade (m/s)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Energia Potencial Gravitacional</div>
+                    E_p = m·g·h
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: E_p = energia potencial (J), h = altura (m)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Quantidade de Movimento</div>
+                    p = m·v
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: p = quantidade de movimento (kg·m/s)</p>
+                </div>
+
+                <div class="formula">
+                    <div class="formula-label">Impulso</div>
+                    I = F·Δt
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Onde: I = impulso (N·s), Δt = intervalo de tempo (s)</p>
+                </div>
+            </div>
+
+            <!-- Exercícios -->
+            <div id="fisica-exercicios" class="tab-content">
+                <h3>Exercícios Resolvidos</h3>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 1: Movimento Uniforme (Básico)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Um carro percorre uma estrada retilínea com velocidade constante. Na primeira hora, ele percorre 60 km. Qual será a distância percorrida em 3 horas?</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Dados:</strong> Distância na primeira hora = 60 km; Tempo total = 3 horas</p>
+                        <p><strong>2. Calcular velocidade:</strong> v = Δx / Δt = 60 km / 1 h = 60 km/h</p>
+                        <p><strong>3. Calcular distância em 3 horas:</strong> x = v · t = 60 km/h · 3 h = 180 km</p>
+                        <p><strong>Resposta:</strong> O carro percorrerá 180 km em 3 horas.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 2: Movimento Uniformemente Variado (ENEM - Nível Médio)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Um carro parte do repouso e acelera uniformemente a 2 m/s² durante 10 segundos. Qual é a velocidade final do carro e qual é a distância percorrida?</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Dados:</strong> v₀ = 0 (parte do repouso); a = 2 m/s²; t = 10 s</p>
+                        <p><strong>2. Calcular velocidade final:</strong> v = v₀ + a·t = 0 + 2 · 10 = 20 m/s</p>
+                        <p><strong>3. Calcular distância:</strong> x = v₀·t + ½·a·t² = 0 + ½·2·10² = 100 m</p>
+                        <p><strong>Resposta:</strong> Velocidade final = 20 m/s; Distância = 100 m</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 3: Segunda Lei de Newton (UFRGS - 2017)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Uma força de 20 N é aplicada a um corpo de massa m. O corpo desloca-se em linha reta com velocidade que aumenta 10 m/s a cada 2 s. Qual é o valor da massa m?</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Dados:</strong> F = 20 N; Δv = 10 m/s; Δt = 2 s</p>
+                        <p><strong>2. Calcular aceleração:</strong> a = Δv / Δt = 10 m/s / 2 s = 5 m/s²</p>
+                        <p><strong>3. Aplicar Segunda Lei de Newton:</strong> F = m·a → m = F / a = 20 N / 5 m/s² = 4 kg</p>
+                        <p><strong>Resposta:</strong> A massa é 4 kg.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 4: Trabalho e Energia (FUVEST - Nível Difícil)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Um objeto de 2 kg é lançado verticalmente para cima com velocidade inicial de 20 m/s. Desprezando a resistência do ar e considerando g = 10 m/s², calcule: a) a altura máxima atingida; b) a velocidade quando o objeto retorna ao ponto de lançamento.</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>Parte a) Altura máxima:</strong></p>
+                        <p>Na altura máxima, v = 0. Usando v² = v₀² - 2·g·h (movimento para cima):</p>
+                        <p>0 = 20² - 2·10·h → 0 = 400 - 20h → h = 20 m</p>
+                        <p><strong>Parte b) Velocidade ao retornar:</strong></p>
+                        <p>Usando conservação de energia: E_inicial = E_final</p>
+                        <p>½·m·v₀² = ½·m·v_final² → v_final = v₀ = 20 m/s (mesma magnitude, sentido oposto)</p>
+                        <p><strong>Respostas:</strong> a) Altura máxima = 20 m; b) Velocidade ao retornar = 20 m/s</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">Exercício 5: Colisão e Conservação de Quantidade de Movimento (ENEM)</div>
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Dois carros colidem em uma via. O carro A (massa 1000 kg) se move a 20 m/s e colide com o carro B (massa 1500 kg) que está parado. Após a colisão, os carros se movem juntos. Qual é a velocidade dos carros após a colisão?</p>
+                    </div>
+                    <button class="btn btn-solution" onclick="toggleSolution(this)">Ver Solução</button>
+                    <div class="exercise-solution">
+                        <p><strong>Resolução:</strong></p>
+                        <p><strong>1. Dados:</strong> m_A = 1000 kg; v_A = 20 m/s; m_B = 1500 kg; v_B = 0 m/s</p>
+                        <p><strong>2. Aplicar conservação de quantidade de movimento:</strong></p>
+                        <p>p_antes = p_depois</p>
+                        <p>m_A·v_A + m_B·v_B = (m_A + m_B)·v_final</p>
+                        <p>1000·20 + 1500·0 = (1000 + 1500)·v_final</p>
+                        <p>20000 = 2500·v_final</p>
+                        <p>v_final = 8 m/s</p>
+                        <p><strong>Resposta:</strong> A velocidade dos carros após a colisão é 8 m/s.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculadora -->
+            <div id="fisica-calculadora" class="tab-content">
+                <h3>Calculadora de Mecânica</h3>
+
+                <div class="calculator">
+                    <h3>Movimento Uniformemente Variado</h3>
+                    <div class="form-group">
+                        <label for="v0">Velocidade Inicial (m/s):</label>
+                        <input type="number" id="v0" placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="aceleracao">Aceleração (m/s²):</label>
+                        <input type="number" id="aceleracao" placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="tempo">Tempo (s):</label>
+                        <input type="number" id="tempo" placeholder="0" step="0.01">
+                    </div>
+                    <button class="btn" onclick="calcularMUV()">Calcular</button>
+                    <div id="resultado-muv" class="result">
+                        <div class="result-label">Velocidade Final (m/s):</div>
+                        <div class="result-value" id="valor-vf">0</div>
+                        <div class="result-label" style="margin-top: 1rem;">Deslocamento (m):</div>
+                        <div class="result-value" id="valor-deslocamento">0</div>
+                    </div>
+                </div>
+
+                <div class="calculator">
+                    <h3>Energia Cinética</h3>
+                    <div class="form-group">
+                        <label for="massa-ec">Massa (kg):</label>
+                        <input type="number" id="massa-ec" placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="velocidade-ec">Velocidade (m/s):</label>
+                        <input type="number" id="velocidade-ec" placeholder="0" step="0.01">
+                    </div>
+                    <button class="btn" onclick="calcularEnergiaC()">Calcular</button>
+                    <div id="resultado-ec" class="result">
+                        <div class="result-label">Energia Cinética (J):</div>
+                        <div class="result-value" id="valor-ec">0</div>
+                    </div>
+                </div>
+
+                <div class="calculator">
+                    <h3>Energia Potencial Gravitacional</h3>
+                    <div class="form-group">
+                        <label for="massa-ep">Massa (kg):</label>
+                        <input type="number" id="massa-ep" placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="altura">Altura (m):</label>
+                        <input type="number" id="altura" placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="gravidade">Gravidade (m/s²):</label>
+                        <input type="number" id="gravidade" placeholder="10" value="10" step="0.01">
+                    </div>
+                    <button class="btn" onclick="calcularEnergiaP()">Calcular</button>
+                    <div id="resultado-ep" class="result">
+                        <div class="result-label">Energia Potencial (J):</div>
+                        <div class="result-value" id="valor-ep">0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <button class="btn back-button" onclick="showHome()">← Voltar</button>
+            
+            <h2>📖 Sobre Este Site</h2>
+            <p>Este é um projeto educacional inovador criado para ajudar estudantes a se prepararem para os principais vestibulares brasileiros, como FUVEST, Enem, UnB, UEG e UNIRV.</p>
+
+            <h3>Objetivo</h3>
+            <p>Fornecer um recurso completo e interativo que combine teoria, fórmulas essenciais, exercícios resolvidos e ferramentas práticas para o estudo de Física e Química.</p>
+
+            <h3>Conteúdo</h3>
+            <p>O site oferece:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Estequiometria:</strong> Conceitos fundamentais, relações estequiométricas, exercícios resolvidos e calculadora interativa</li>
+                <li><strong>Mecânica:</strong> Cinemática, dinâmica, trabalho e energia, com exercícios de diferentes níveis de dificuldade</li>
+                <li><strong>Calculadoras Interativas:</strong> Ferramentas para cálculos rápidos e verificação de resultados</li>
+            </ul>
+
+            <h3>Como Usar</h3>
+            <p>Navegue pelas seções de Química e Física usando o menu principal. Cada disciplina está dividida em abas com teoria, fórmulas, exercícios e calculadora. Você pode expandir as soluções dos exercícios clicando no botão "Ver Solução".</p>
+
+            <h3>Adições Futuras</h3>
+            <p>Este site foi projetado para ser facilmente expansível. Novas disciplinas, exercícios e ferramentas podem ser adicionadas conforme necessário. Se você deseja sugerir novos conteúdos, entre em contato!</p>
+
+            <h3>Tecnologia</h3>
+            <p>Este site foi desenvolvido com HTML5, CSS3 e JavaScript vanilla, garantindo compatibilidade com todos os navegadores modernos e responsividade em dispositivos móveis.</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Educação em Física e Química. Todos os direitos reservados.</p>
+        <p>Desenvolvido com ❤️ para estudantes de vestibular</p>
+    </footer>
+
+    <script>
+        // Funções de Navegação
+        function showHome() {
+            hideAllSections();
+            document.getElementById('home').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showSubject(subject) {
+            hideAllSections();
+            document.getElementById(subject).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showAbout() {
+            hideAllSections();
+            document.getElementById('about').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function hideAllSections() {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+        }
+
+        // Funções de Tabs
+        function switchTab(subject, tab) {
+            // Esconder todos os tabs do assunto
+            const tabContents = document.querySelectorAll(`#${subject}-${tab}`).parentElement?.querySelectorAll('.tab-content');
+            if (tabContents) {
+                tabContents.forEach(content => content.classList.remove('active'));
+            }
+
+            // Mostrar o tab selecionado
+            const selectedTab = document.getElementById(`${subject}-${tab}`);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Atualizar botões
+            const buttons = event.target.parentElement.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Função para expandir/retrair soluções
+        function toggleSolution(button) {
+            const solution = button.nextElementSibling;
+            solution.classList.toggle('show');
+            button.textContent = solution.classList.contains('show') ? 'Ocultar Solução' : 'Ver Solução';
+        }
+
+        // Calculadoras de Química
+        function calcularMols() {
+            const massa = parseFloat(document.getElementById('massa').value);
+            const massaMolar = parseFloat(document.getElementById('massa-molar').value);
+
+            if (massa && massaMolar) {
+                const mols = (massa / massaMolar).toFixed(4);
+                document.getElementById('valor-mols').textContent = mols + ' mol';
+                document.getElementById('resultado-mols').classList.add('show');
+            }
+        }
+
+        function calcularMassa() {
+            const mols = parseFloat(document.getElementById('mols').value);
+            const massaMolar = parseFloat(document.getElementById('massa-molar-2').value);
+
+            if (mols && massaMolar) {
+                const massa = (mols * massaMolar).toFixed(2);
+                document.getElementById('valor-massa').textContent = massa + ' g';
+                document.getElementById('resultado-massa').classList.add('show');
+            }
+        }
+
+        // Calculadoras de Física
+        function calcularMUV() {
+            const v0 = parseFloat(document.getElementById('v0').value) || 0;
+            const aceleracao = parseFloat(document.getElementById('aceleracao').value) || 0;
+            const tempo = parseFloat(document.getElementById('tempo').value) || 0;
+
+            if (tempo) {
+                const vf = (v0 + aceleracao * tempo).toFixed(2);
+                const deslocamento = (v0 * tempo + 0.5 * aceleracao * tempo * tempo).toFixed(2);
+                
+                document.getElementById('valor-vf').textContent = vf + ' m/s';
+                document.getElementById('valor-deslocamento').textContent = deslocamento + ' m';
+                document.getElementById('resultado-muv').classList.add('show');
+            }
+        }
+
+        function calcularEnergiaC() {
+            const massa = parseFloat(document.getElementById('massa-ec').value);
+            const velocidade = parseFloat(document.getElementById('velocidade-ec').value);
+
+            if (massa && velocidade) {
+                const ec = (0.5 * massa * velocidade * velocidade).toFixed(2);
+                document.getElementById('valor-ec').textContent = ec + ' J';
+                document.getElementById('resultado-ec').classList.add('show');
+            }
+        }
+
+        function calcularEnergiaP() {
+            const massa = parseFloat(document.getElementById('massa-ep').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const gravidade = parseFloat(document.getElementById('gravidade').value) || 10;
+
+            if (massa && altura) {
+                const ep = (massa * gravidade * altura).toFixed(2);
+                document.getElementById('valor-ep').textContent = ep + ' J';
+                document.getElementById('resultado-ep').classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>
